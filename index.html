@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinematic Browser Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      overflow: hidden;
+      background: #000;
+      font-family: 'Courier New', monospace;
+    }
+    
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+    
+    #loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #00ffff;
+      font-size: 24px;
+      text-align: center;
+      text-shadow: 0 0 20px #00ffff;
+      z-index: 2000;
+    }
+    
+    #loading.hidden {
+      display: none;
+    }
+    
+    .neon-text {
+      animation: neon-glow 1.5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes neon-glow {
+      from {
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+      }
+      to {
+        text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #ff00ff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div class="neon-text">
+      LOADING CINEMATIC EXPERIENCE...<br>
+      <span style="font-size: 14px;">Initializing Three.js Engine</span>
+    </div>
+  </div>
+  
+  <script type="module" src="/src/main.ts"></script>
+  
+  <script>
+    // Hide loading screen after a short delay
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const loading = document.getElementById('loading');
+        if (loading) {
+          loading.classList.add('hidden');
+        }
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
